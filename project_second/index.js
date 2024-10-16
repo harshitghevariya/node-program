@@ -13,9 +13,17 @@ app.get("/",function(req,res){
 })
 
 app.post('/add',(req,res)=>{
-    const {userId,name,item} = req.body;
-    items.push({userId,name,item})
+    const {pid,productname,price} = req.body;
+    items.push({pid,productname,price})
     res.send("item added!")
+})
+
+
+app.get('/items/:id',(req,res)=>{
+    debugger
+    const update = items.find((id)=>{id == items.pid})
+    res.send(update)
+    console.log(update)
 })
 
 app.get("/items",(req,res)=>{
