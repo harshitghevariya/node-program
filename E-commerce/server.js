@@ -13,6 +13,8 @@ app.use(express.json())
 //routes
 app.use("/api/auth",authRoutes)
 app.use("/api/users",userRoutes)
+// app.use("/api/users",allusers)
+
 //server port
 app.listen(port,()=>{
     console.log(`Server runnig on port ${port}`)
