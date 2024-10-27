@@ -4,10 +4,10 @@ const validateEmail = function(email) {
 	return regex.test(email);
 };
 
-const validationPassword = function(password){
-	const pass = /^[a-zA-Z0-9!@#$%^&*]{6,16}$/;
-	return pass.test(password)
-}
+// const validationPassword = function(password){
+// 	const pass = /^[a-zA-Z0-9!@#$%^&*]{6,16}$/;
+// 	return pass.test(password)
+// }
 
 const userSchema = new mongoose.Schema(
 	{
@@ -28,7 +28,7 @@ const userSchema = new mongoose.Schema(
 	password:{
 		type:String,
 		require:[true,"Please add the user password"],
-		validate:[validationPassword,"Please enter a valid password"],
+		// validate:[validationPassword,"Please enter a valid password"],
 		min:8,
 		max:10
 	},

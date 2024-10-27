@@ -1,16 +1,15 @@
 const Cart = require("../models/cartModel")
 
 const cartcreate = async(req,res)=>{
-    const { name, quantity, price } = req.body;
-    console.log("body",req.body)
-    if(!name||!quantity||!price){
+    const { quantity, price, product_id, user_id } = req.body;
+
+    if(!quantity||!price){
         res.status(400).json({message:"All fields are mandatory"})
     }
     const cart = await Cart.create({
-        name,
         quantity,
         price,
-        product_id: req.params.product_id
+        product_id, user_id
     })
     res.status(201).json(cart)
     console.log("cart",cart)
@@ -21,6 +20,7 @@ const updateCart = async(req,res)=>{
     if(!cart){
         res.status(404).json({message:"Cart not found"})
     }
+    
     const updatecart = await Cart.findByIdAndUpdate(
         req.params.id,
         req.body,

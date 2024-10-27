@@ -12,23 +12,6 @@ dbConnect();
 //middleware
 app.use(express.json())
 
-const upload = multer({
-    storage: multer.diskStorage({
-        destination:function(req,file,cb){
-            cb(null,"uploads")
-        },
-        filename:function(req,file,cb){
-            cb(null,file.fieldname+"-"+Date.now()+".png")
-        }
-    })
-}).single("user_file")
-app.post("/api/upload",upload,(req,resp)=>{
-    console.log(req.file, req.body.name)
-    res.status(200).json("ok")
-    resp.send("file upload")
-    console.log("hello")
-})
-
 //routes
 app.use("/api/auth",authRoutes)
 app.use("/api/users",userRoutes)
